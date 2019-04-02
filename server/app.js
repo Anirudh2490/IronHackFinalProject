@@ -37,6 +37,7 @@ const app = express();
 
 // Middleware Setup
 app.use(logger('dev'));
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

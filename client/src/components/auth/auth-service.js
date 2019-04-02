@@ -59,6 +59,11 @@ class AuthService {
         return this.service.get('/list-fabrics')
             .then(response => response.data);
     }
+
+    listPrivateDesigners = () => {
+        return this.service.get('/list-designers')
+            .then(response => response.data);
+    }
 }
 
 export default AuthService;

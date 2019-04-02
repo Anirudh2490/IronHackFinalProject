@@ -152,7 +152,7 @@ class ManufactureForm extends Component {
                 <Form.Label>Upload the logo of your business</Form.Label>
                 <Form.Control
                   required
-                  type="text"
+                  type="file"
                   name="logo"
                   value={this.state.logo}
                   onChange={e => this.handleChange(e)}

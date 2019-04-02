@@ -5,19 +5,18 @@ const User = require('./User');
 const validate = require('mongoose-validator');
 
 const designerSchema = new Schema({
-	user: { type: Schema.Types.ObjectId, ref: 'User' },
-	brand: String, //yes
-	address: String, //yes
-	city: String, //yes
-	state: String, //yes
-	zipcode: Number, //yes
-	country: String, //yes
-	designInspiration: String,
-	fabric_types: [], //yes
-	//image?
-	product_gallery: { type: Schema.Types.ObjectId, ref: 'ProductGallery' },
-	category_types: [],
-	source: '',
+	user_id: { type: Schema.Types.ObjectId, ref: 'User' },
+	brand_name: 	{ type: String, require: true },	
+	address: { type: String, require: true },
+	city: { type: String, require: true },
+	state: { type: String, require: true },
+	zipcode: { type: Number, require: true },
+	country: { type: String, require: true },
+	design_inspiration: { type: String, require: true },
+	product_types: { type: String, required: true },
+	images: { type: Array, required: true },
+	category_types: { type: Array, required: false },
+	fabric_types: { type: Array, required: false },
 	collections:{ type: Schema.Types.ObjectId, ref: 'Collections' }
 }, { timestamps: true });
 

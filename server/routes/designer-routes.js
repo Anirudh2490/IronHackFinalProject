@@ -2,9 +2,35 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const Designer = require('../models/Designer');
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads');
+    },
+    filename: function(req, file, cb) {
+        cb(null, new Date().toISOString() + file.originalname)
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    // reject a file
+    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true);
+    }else{
+        cb(null, false);
+    }
+};
+
+const upload = multer({
+        storage: storage, 
+        limits: {
+            fileSize: 1024 * 1024 * 5
+        },
+        fileFilter: fileFilter
+    });
 
 router.get('/list-designers', (req, res, next) => {
-    Designer.find().populate('user')
+    Designer.find({"user_id": req.user._id}).populate('designers')
         .then(allDesigners => {
             res.json(allDesigners);
         })
@@ -13,18 +39,25 @@ router.get('/list-designers', (req, res, next) => {
         })
 });
 
-router.post('/create-designer', (req, res, next) => {
+router.post('/create-designer', upload.array('image_gallery', 10), (req, res, next) => {
+    const images = [];
+    if(req.files) {
+        req.files.forEach(function(item) {
+            images.push(item.path);
+        })        
+    }
+    
     Designer.create({
-        user: req.user._id,
-        brand: req.body.brand,
-        full_name: req.body.full_name,
+        user_id: req.user._id,
+        brand_name: req.body.brand,
         address: req.body.address,
         city: req.body.city,
-        zipcode: req.body.zipcode,
         state: req.body.state,
+        zipcode: req.body.zipcode,
         country: req.body.country,
-        email: req.body.email,
-        designer_inspiration: req.body.designerInspiration,
+        design_inspiration: req.body.design_inspiration,
+        product_types: req.body.product_types,
+        images: images,
         fabric_types: req.body.fabric_types,
         category_types: req.body.category_types
     }).then(response => { res.json(response) }).catch(err => { err.json(err) });

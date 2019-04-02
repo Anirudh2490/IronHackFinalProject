@@ -12,21 +12,20 @@ class DesignerForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			brand: "",
+			brand_name: "",
 			address: "",
 			city: "",
 			state: "",
-			country: "",
 			zipcode: "",
+			country: "",
 			design_inspiration: "",
 			product_types: "",
 			image_gallery: "",
-			accesories: false,
+			accessories: false,
 			pants: false,
 			shirts: false,
 			jackets: false,
 			leftOverFabric: false,
-			source: "",
 			cotton: false,
 			wool: false,
 			denim: false,
@@ -52,6 +51,8 @@ class DesignerForm extends Component {
 		const fabricArray = ["cotton", "wool", "denim", "leather", "synthetics", "velvet", "muslin"].forEach((fabName) => {
 			if (this.state[fabName]) fabric_types_array.push(fabName)
 		})
+		
+		// const images = this.setState({image_gallery: event.target.files[0]})
 		const formData = {
 			brand: this.state.brand,
 			address: this.state.address,
@@ -63,8 +64,7 @@ class DesignerForm extends Component {
 			product_types: this.state.product_types,
 			image_gallery: this.state.image_gallery,
 			category_types: category_types,
-			fabric_types: fabric_types_array,
-			source: this.state.source
+			fabric_types: fabric_types_array
 		};
 		this.service
 			.createDesigner(formData)
@@ -80,7 +80,7 @@ class DesignerForm extends Component {
 		return (
 			<div className="row">
 				<div className="designer-registration">
-					<Form onSubmit={this.handleFormSubmit}>
+					<Form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
 						<div className="register-title">
 							<h2>Register as a designer</h2>
 						</div>
@@ -200,10 +200,11 @@ class DesignerForm extends Component {
 								<Form.Label>Uplaod photos of your past products</Form.Label>
 								<Form.Control
 									required
-									type="text"
+									type="file"
 									value={this.state.image_gallery}
 									name="image_gallery"
 									onChange={e => this.handleChange(e)}
+									multiple
 								/>
 							</Form.Group>
 						</Form.Row>

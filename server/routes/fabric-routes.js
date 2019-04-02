@@ -14,11 +14,13 @@ router.get('/list-fabrics', (req, res, next) => {
 });
 
 router.post('/create-fabric', (req, res, next) => {
+	console.log(req.user._id)
     Fabric.create({
-    		user: req.user._id,
+    		user_id: req.user._id,
         fabricType: req.body.fabricType,
         quantity: req.body.quantity,
         unit_cost: req.body.unit_cost,
+        deadlinedate: req.body.deadlinedate,
         description: req.body.description
 		})
 		.then(response => {res.json(response)})

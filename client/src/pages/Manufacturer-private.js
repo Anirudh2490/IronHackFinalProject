@@ -8,7 +8,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 class ManufacturerPrivate extends Component {
   constructor(props) {
     super(props);
-    this.state = { user_id: '', description: "", quantity: "", unit_cost:"",fabricType: "", error: false, fabricLists: [] };
+    this.state = { user_id: '', description: "", quantity: "", unit_cost:"", deadlinedate: "", fabricType: "", error: false, fabricLists: [] };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.service = new AuthService();
   }
@@ -23,19 +23,14 @@ class ManufacturerPrivate extends Component {
       description: this.state.description,
       quantity: this.state.quantity,
       unit_cost: this.state.unit_cost,
+      deadlinedate: this.state.deadlinedate,
       fabricType: this.state.fabricType
     }
 
     this.service
       .createFabric(formData)
       .then(response => {
-        this.setState({
-          description: '',
-          quantity: '',
-          unit_cost: '',
-          fabricType: '',
-          user_id: ''
-        })
+        this.getAllFabrics()
       })
       .catch(error => console.log(error));
   }
@@ -44,11 +39,15 @@ class ManufacturerPrivate extends Component {
     const { name, value } =  event.target;
     this.setState({ [name]: value })
   }
-  
-  componentDidMount() {
-    return this.service
+
+  getAllFabrics() {
+    this.service
         .listFabric()
-        .then(data => this.setState({ fabricLists: data}))
+        .then(data => this.setState({ fabricLists: data}))    
+  }
+   
+  componentDidMount() {
+    this.getAllFabrics();
   }
 
   render() {
