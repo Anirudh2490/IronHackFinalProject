@@ -83,7 +83,7 @@ class App extends Component {
             render={() => <ModalLogin getUser={this.getTheUser} />}
           />
           {/* Two signup : one for designers, one for manufacturers */}
-          <Route exact path="/manufacturers" component={ManufacturerPublic} />
+          <Route exact path="/manufacturers" component={ManufacturerDetails} />
           <Route
             exact
             path="/manufacturer-registration"

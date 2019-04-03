@@ -32,17 +32,20 @@ class ManufacturerDetails extends Component {
     return (
       <Container>
         <Row>
-          {/* ------>  DesignerProfileCard*/}
+          <Col>{/* ------>  DesignerProfileCard*/}
           <ManufacturerProfileCard
             name={this.state.manufacturer.name}
             label={this.state.manufacturer.brandname}
             email={this.state.manufacturer.email}
             fabricsavailable={this.state.manufacturer.fabricsavailable}
           />
+          </Col>
+          <Col>
           {/* <------- */}
           {/* ------>  StartACollectionCard*/}
           <OfferACollectionCard />
           {/* <------- */}
+          </Col>
         </Row>
       </Container>
     );

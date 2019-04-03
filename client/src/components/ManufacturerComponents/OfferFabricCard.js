@@ -4,10 +4,9 @@ import { Button, Form, Col, Row } from "react-bootstrap";
 let fabricList = [];
 const OfferFabricCard = props => (
   <div>
+    <h2>Sell your fabrics leftovers</h2>
     <Row>
       <Col sm={6}>
-        <h2>Sell your fabrics leftovers</h2>
-        <Row>
           <Form.Group controlId="fabricType">
             <Form.Label>Which fabric would you like to buy?</Form.Label>
             <Form.Control
@@ -25,9 +24,7 @@ const OfferFabricCard = props => (
               <option>Synthetic</option>
             </Form.Control>
           </Form.Group>
-        </Row>
       </Col>
-      <Row>
         <Col>
           <Form.Group controlId="fabricQty">
             <Form.Label>How many meters are you selling ?</Form.Label>
@@ -40,7 +37,6 @@ const OfferFabricCard = props => (
             />
           </Form.Group>
         </Col>
-      </Row>
     </Row>
     <Row>
       <Col>
