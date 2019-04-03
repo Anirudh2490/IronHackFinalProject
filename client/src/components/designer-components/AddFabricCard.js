@@ -12,7 +12,6 @@ class AddFabricCard extends Component {
         this.state = {
             category:"",
             amount:"",
-            collectiondeadline: new Date(),
             plans:""
         };
         this.dateHandler = this.dateHandler.bind(this);
@@ -81,12 +80,6 @@ class AddFabricCard extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
-                            <Form.Group controlId="date">
-                                <Form.Label>By when would you need the fabric?</Form.Label>
-                                <Calendar required onChange={this.dateHandler} value={this.state.collectiondeadline} name="collectiondeadline" />
-                            </Form.Group>
-                            </Col>
                             <Col>
                                 <Form.Group controlId="fabricPlan">
                                     <Form.Label>How do you plan to use it?</Form.Label>

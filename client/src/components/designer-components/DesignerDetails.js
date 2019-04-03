@@ -36,28 +36,24 @@ class DesignerDetails extends Component {
                         {
                         type:"Cotton",
                         amount:"45 meters",
-                        date_created:"11/02/2019",
                         collectiondeadline:"24/05/2019",
                         plans:"Using it for some light summer clothes"
                     },
                     {
                         type:"Wool",
                         amount:"145 meters",
-                        date_created:"11/02/2019",
                         collectiondeadline:"24/05/2019",
                         plans:"Use it for some winter clothes"
                     },
                     {
                         type:"Linen",
                         amount:"45 meters",
-                        date_created:"11/02/2019",
                         collectiondeadline:"24/05/2019",
                         plans:"Use it for some warm khakhees"
                     },
                     {
                         type:"Synthetics",
                         amount:"45 meters",
-                        date_created:"11/02/2019",
                         collectiondeadline:"24/05/2019",
                         plans:"Not sure yet"
                     }
