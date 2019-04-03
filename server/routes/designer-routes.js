@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const Designer = require('../models/Designer');
+const Collection = require('../models/Collections');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -61,6 +62,16 @@ router.post('/create-designer', upload.array('image_gallery', 10), (req, res, ne
         fabric_types: req.body.fabric_types,
         category_types: req.body.category_types
     }).then(response => { res.json(response) }).catch(err => { err.json(err) });
+});
+
+router.post('/create-collection', (req, res, next) => {
+    Collection.create({
+        user_id: req.user._id,
+        name: req.body.collectionName,
+        about: req.body.aboutCollection,
+        launchDate: req.body.launchdate,
+        fabrics: req.body.fabrics
+    }).then(response => { res.json(response)}).catch(err => { err.json(err) });
 });
 
 module.exports = router;

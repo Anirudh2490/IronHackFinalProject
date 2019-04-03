@@ -1,48 +1,36 @@
 import React, {Component} from 'react';
 import AddFabricCard from './AddFabricCard';
 import { Card, Button, Form, Col, Row } from 'react-bootstrap';
-import Calendar from './DatePicker';
+// import Calendar from './DatePicker';
+import Calendar from 'react-calendar'
 import RequiredFabrics from './RequiredFabrics';
-
-
-// const aboutFabric = () => {
-//     this.state.fabrics.map((fabric, id) => {
-//         <RequiredFabrics key={id} type={fabric.type}/>
-//     }
-//     )
-// }
+import AuthService from '../auth/auth-service';
 
 class StartACollectionCard extends Component {
 
     constructor(props) {
         super(props);
         this.state={
-            fabrics:[{
-                type:"Cotton",
-                amount:"45 meters",
-                collectiondeadline:"24/05/2019",
-                plans:"Using it for some light summer clothes"
-            },
-            {
-                type:"Wool",
-                amount:"145 meters",
-                collectiondeadline:"24/05/2019",
-                plans:"Use it for some winter clothes"
-            }],
+            fabrics:[{category: "", amount: "", plans:"" }],
             collectionName:"",
             aboutCollection:'',
             launchDate:''
         }
+        this.dateHandler = this.dateHandler.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.service = new AuthService();
     }
 
     totalCount = () => this.state.fabrics.length
 
-
-    dateHandler = date => this.setState({ launchdate: date })
+    dateHandler(date) {
+        this.setState({ launchdate: date })
+    }
 
 	handleChange = (event) => {
 		const { name, value } = event.target;
-		this.setState({ [name]: value });
+		this.setState({ [name]: value});
     }
     
     addFabrics = (fabric) => {
@@ -56,20 +44,32 @@ class StartACollectionCard extends Component {
         })
     }
 
-    // handleAddPlayer = (name) => {
-    //     this.setState( prevState => {
-    //       return {
-    //         players: [
-    //           ...prevState.players,
-    //           {
-    //             name,
-    //             score: 0,
-    //             id: this.prevPlayerId += 1
-    //           }
-    //         ]
-    //       };
-    //     });
-    //   }
+    handleFormSubmit(event) {
+        event.preventDefault();
+        const formData = {
+            fabrics: this.state.fabrics,
+            collectionName: this.state.collectionName,
+            aboutCollection: this.state.aboutCollection,
+            launchdate: this.state.launchdate
+        }
+
+        console.log("form" + JSON.stringify(formData));
+        this.service.createCollection(formData)
+            .then(res => {
+                console.log("success" + res);
+                this.setState({
+                    collectionName: '',
+                    aboutCollection: '',
+                    launchdate: '',
+                    fabrics: []
+                })
+            })
+            .catch(error => {
+                console.log("error" + error);
+            });
+    }
+
+
 
     render() {
         return(
@@ -80,21 +80,26 @@ class StartACollectionCard extends Component {
                         <AddFabricCard count={this.totalCount} addFabric={this.addFabrics}/>
                         {console.log("fabricSubmissions" + this.state.fabrics.length)}
                         {console.log(this.state.fabrics)}
-                
-                        {/* fabricType={this.state.fabric.type} quantity={this.state.fabric.amount} collectiondeadline={this.state.fabric.collectiondeadline} plans={this.state.fabric.plans}*/}
-                    <Form>
                         <Row>
-                            <Col>    
-                                <h4><Form.Control name="collectionName" value={this.state.collectionName} onChange={e => this.handleChange(e)} type='text' placeholder='Name of your upcoming Collection'></Form.Control></h4>
-                                <Form.Control name="aboutCollection" onChange={e => this.handleChange(e)} type='text' placeholder='What was your inpiration behind this collection?'></Form.Control>
+                            <Col>
+                                <Form.Group controlId="finalOrder" />
+                                <p><strong>Total Fabric Needed</strong></p>
+                                <RequiredFabrics fabric={this.state.fabrics} />
                             </Col>
                         </Row>
-                    </Form>
-                    <br/>
-                    <Form>
+                
+                        {/* fabricType={this.state.fabric.type} quantity={this.state.fabric.amount} collectiondeadline={this.state.fabric.collectiondeadline} plans={this.state.fabric.plans}*/}
+                    <Form onSubmit={this.handleFormSubmit}>
+                        <Row>
+                            <Col>    
+                                <h4><Form.Control required name="collectionName" value={this.state.collectionName} onChange={e => this.handleChange(e)} type='text' placeholder='Name of your upcoming Collection'></Form.Control></h4>
+                                <Form.Control required name="aboutCollection" value={this.state.aboutCollection} onChange={e => this.handleChange(e)} type='text' placeholder='What was your inpiration behind this collection?'></Form.Control>
+                            </Col>
+                        </Row>
+                        <br />
                         <Form.Label>Approximately what date will you launch your collection?</Form.Label>
                         <Calendar onChange={this.dateHandler} value={this.state.launchdate}/><br/>
-                        <Button variant="primary">Start Collection Drive</Button>
+                        <Button type="submit" variant="primary">Start Collection Drive</Button>
                     </Form>
                 </Card>
             </Col>

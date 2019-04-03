@@ -64,6 +64,11 @@ class AuthService {
         return this.service.get('/list-designers')
             .then(response => response.data);
     }
+
+    createCollection = (params) => {
+        return this.service.post('/create-collection', params)
+            .then(response => response.data);
+    }
 }
 
 export default AuthService;

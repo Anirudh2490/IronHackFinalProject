@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button, Form, Col, Row } from 'react-bootstrap';
 // import Calendar from './DatePicker';
 import Calendar from 'react-calendar'
-import RequiredFabric from './RequiredFabrics';
 
 
 class AddFabricCard extends Component {
@@ -14,7 +13,6 @@ class AddFabricCard extends Component {
             amount:"",
             plans:""
         };
-        this.dateHandler = this.dateHandler.bind(this);
     }
 
     handleChange(event) {
@@ -25,34 +23,12 @@ class AddFabricCard extends Component {
     handleFormSubmit = (e) => {
         e.preventDefault();
         this.props.addFabric(this.state)
+        this.setState({
+            category: '',
+            amount: '',
+            plans: ''
+        })
     }
-
-    dateHandler(date) {
-        console.log(date);
-        this.setState({ collectiondeadline: date })
-    }
-   
-
-    // handleFormSubmit(event) {
-    //     event.preventDefault();
-
-    //     // const formData = {
-    //     //     fabricType: this.state.fabric.type,
-    //     //     amount: this.state.fabric.amount,
-    //     //     quantity: this.state.fabric.quantity,
-    //     //     plans: this.state.fabric.plans,
-
-    //     // };
-    //     this.service
-    //         .createFabric(formData)
-    //         .then(res => {
-    //             console.log(formData);
-    //             this.props.history.push('/profile')
-    //         })
-    //         .catch(error => {
-    //             console.log("No" + error);
-    //         });
-    // }
 
     render() {
         console.log(this.state)
@@ -64,6 +40,7 @@ class AddFabricCard extends Component {
                             <Form.Group controlId="category">
                                 <Form.Label>Which fabric would you like to buy?</Form.Label>
                                 <Form.Control required name="category" value={this.state.category} onChange={e => this.handleChange(e)} as="select">
+                                    <option>Choose</option>
                                     <option>Cotton</option>
                                     <option>Denim</option>
                                     <option>Wool</option>
@@ -90,14 +67,6 @@ class AddFabricCard extends Component {
                     <Row>
                         <Col>
                             <Button type="submit" variant="outline-success">Add Fabric</Button>
-                                {/* fabricList.push(<RequiredFabric type={this.state.type} amount={this.state.amount}/>)} variant="outline-success">*/}
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Form.Group controlId="finalOrder" />
-                            <p><strong>Total Fabric Needed</strong></p>
-                            <RequiredFabric category={this.state.category} amount={this.state.amount}/>
                         </Col>
                     </Row>
                 </Form>
