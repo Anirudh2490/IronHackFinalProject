@@ -13,7 +13,7 @@ const OldCollectionRuns = (props) =>
         <Row>
             <Col>
                 <Card bg="light">
-                    <Card.Header>Last Day - {props.deadline}.</Card.Header>
+                    <Card.Header>Collection Launch Date - {props.deadline}.</Card.Header>
                     <Card.Body>
                         <Card.Title>{props.name}</Card.Title>
                         <Card.Text>
@@ -28,7 +28,7 @@ const OldCollectionRuns = (props) =>
             </Col>
             <Col>
                 <Card bg="light">
-                    <Card.Header>Last Day - {props.deadline}.</Card.Header>
+                    <Card.Header>Collection Launch Date - {props.deadline}.</Card.Header>
                     <Card.Body>
                         <Card.Title>{props.name}</Card.Title>
                         <Card.Text>
@@ -43,7 +43,7 @@ const OldCollectionRuns = (props) =>
             </Col>
                         <Col>
                 <Card bg="light">
-                    <Card.Header>Last Day - {props.deadline}.</Card.Header>
+                    <Card.Header>Collection Launch Date - {props.deadline}.</Card.Header>
                     <Card.Body>
                         <Card.Title>{props.name}</Card.Title>
                         <Card.Text>
