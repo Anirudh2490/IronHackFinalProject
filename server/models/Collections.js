@@ -5,7 +5,8 @@ const Fabric = require('./Fabric');
 const collectionsSchema = new Schema({
 	user_id: { type: Schema.Types.ObjectId, ref: 'Fabric' },
 	name: String,
-	about: String,
+    about: String,
+    launchDate: String
 });
 
 const Collection = mongoose.model('Collection', collectionsSchema);

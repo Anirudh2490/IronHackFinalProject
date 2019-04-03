@@ -61,7 +61,7 @@ class DesignerDetails extends Component {
                         collectiondeadline:"24/05/2019",
                         plans:"Not sure yet"
                     }
-                ]        
+                    ]        
                 }
             ]
         }  

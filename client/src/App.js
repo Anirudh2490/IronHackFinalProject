@@ -14,7 +14,9 @@ import MyProfile from "./pages/MyProfile";
 import ModalLogin from "./components/ModalLogin";
 import ManufactureForm from "./forms/ManufactureForm";
 import DesignerForm from "./forms/DesignerForm";
-import ProtectedRoute from "./components/auth/protected-route"
+import ProtectedRoute from "./components/auth/protected-route";
+import ManufacturerProfile from "./pages/ManufacturerProfile";
+import ManufacturerDetails from './components/ManufacturerComponents/ManufacturerDetails'
 
 class App extends Component {
   constructor(props) {
@@ -62,20 +64,51 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <NavbarHeader getUser={this.getTheUser} userInSession={this.state.loggedInUser} />
-        <br></br><br></br><br></br>
+        <NavbarHeader
+          getUser={this.getTheUser}
+          userInSession={this.state.loggedInUser}
+        />
+        <br />
+        <br />
+        <br />
         <Switch>
-          <Route exact path="/" render={() => <Home getUser={this.getTheUser} />} />
-          <Route exact path="/login" render={() => <ModalLogin getUser={this.getTheUser} />} />
+          <Route
+            exact
+            path="/"
+            render={() => <Home getUser={this.getTheUser} />}
+          />
+          <Route
+            exact
+            path="/login"
+            render={() => <ModalLogin getUser={this.getTheUser} />}
+          />
           {/* Two signup : one for designers, one for manufacturers */}
           <Route exact path="/manufacturers" component={ManufacturerPublic} />
-          <Route exact path="/manufacturer-registration" component={ManufactureForm} />
+          <Route
+            exact
+            path="/manufacturer-registration"
+            component={ManufactureForm}
+          />
           <Route exact path="/designer-registration" component={DesignerForm} />
-          <Route exact path="/manufacturers-private" component={ManufacturerPrivate} />
+          <Route
+            exact
+            path="/manufacturers-private"
+            component={ManufacturerDetails}
+          />
+          <Route
+            exact
+            path="/manufacturers-profile"
+            component={ManufacturerDetails}
+          />
+          <Route exact path="/designers-profile" component={DesignerProfile} />
           <Route exact path="/designers" component={DesignerProfile} />
-          <Route exact path="/designers-private" component={DesignerPrivate} />
           <Route exact path="/concept" component={Concept} />
-          <ProtectedRoute user={this.state.loggedInUser} exact path="/profile" component={MyProfile} />
+          <ProtectedRoute
+            user={this.state.loggedInUser}
+            exact
+            path="/profile"
+            component={MyProfile}
+          />
         </Switch>
         <Footer />
       </div>
