@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import ManufacturerPublic from "./pages/Manufacturer-public";
-import ManufacturerPrivate from "./pages/Manufacturer-private";
 import DesignerProfile from "./pages/DesignerProfile";
-import DesignerPrivate from "./pages/Designer-profile-private";
 import { Switch, Route } from "react-router-dom";
 import AuthService from "./components/auth/auth-service";
 import Home from "./pages/Home";
@@ -15,7 +13,6 @@ import ModalLogin from "./components/ModalLogin";
 import ManufactureForm from "./forms/ManufactureForm";
 import DesignerForm from "./forms/DesignerForm";
 import ProtectedRoute from "./components/auth/protected-route";
-import ManufacturerProfile from "./pages/ManufacturerProfile";
 import ManufacturerDetails from './components/ManufacturerComponents/ManufacturerDetails'
 
 class App extends Component {
@@ -83,7 +80,7 @@ class App extends Component {
             render={() => <ModalLogin getUser={this.getTheUser} />}
           />
           {/* Two signup : one for designers, one for manufacturers */}
-          <Route exact path="/manufacturers" component={ManufacturerPublic} />
+          <Route exact path="/manufacturers" component={ManufacturerDetails} />
           <Route
             exact
             path="/manufacturer-registration"

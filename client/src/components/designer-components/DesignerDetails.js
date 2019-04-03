@@ -13,6 +13,15 @@ const DesignerGalleryCard = (props) =>
         </Col>
     </Row>
 
+// const RenderFabrics = (props) => 
+//     <div>
+//         {
+//         this.props.designer.collections.map((collection) => {
+//         <p>{collection.name}</p>
+//         })
+//         }
+//     </div>
+
 
 class DesignerDetails extends Component {
     state= {
@@ -84,7 +93,20 @@ class DesignerDetails extends Component {
                     {/* <------- */}
                     <br></br><br></br>
                     {/* OldCollectionRuns --------> */}
-                    <OldCollectionRuns brandname={this.state.designer.brandname} collectiondeadline={this.state.designer.collections[0].fabrics[0].collectiondeadline} name={this.state.designer.collections[0].name} about={this.state.designer.collections[0].about}/>
+                    <Row>
+                        <Col>
+                            <h3>Here's are Collection Drives</h3>
+                        </Col>
+                    </Row>
+            <br /><br /><br />
+
+                    {/* <OldCollectionRuns brandname={this.state.designer.brandname} collectiondeadline={this.state.designer.collections[0].fabrics[0].collectiondeadline} name={this.state.designer.collections[0].name} about={this.state.designer.collections[0].about}/>
+                    {
+                        this.props.designer.collections.map((collection) => {
+                        <p>{collection.name}</p>
+                        })
+                     }
+                    <RenderFabric name={collection.}/> */}
             </Container>
         )
     }
