@@ -1,6 +1,6 @@
 import React from 'react';
 
 const RequiredFabric = (props) =>
-    <div>| {props.type} - {props.quantity} meters |</div>
+    <div>| {props.category} - {props.amount} meters |</div>
 
 export default RequiredFabric;
