@@ -30,8 +30,8 @@ class DesignerDetails extends Component {
             product_gallery: "imgsrc",
             collections:[
                 {
-                    name:"Summer Is Coming",
-                    about:"What else is there to know?",
+                    name:"Name of your upcoming collection",
+                    about:"What is the inspiration behind this collection",
                     fabrics:[
                         {
                         type:"Cotton",
@@ -84,7 +84,7 @@ class DesignerDetails extends Component {
                     {/* <------- */}
                     <br></br><br></br>
                     {/* OldCollectionRuns --------> */}
-                    <OldCollectionRuns brandname={this.state.designer.brandname} collectiondeadline={this.state.designer.collections[0].fabrics[0].collectiondeadline} name={this.state.designer.collections[0].name} about={this.state.designer.collections[0].about}/>
+                    <OldCollectionRuns brandname={this.state.designer.brandname} deadline={this.state.designer.collections[0].fabrics[0].collectiondeadline} name={this.state.designer.collections[0].name} about={this.state.designer.collections[0].about}/>
             </Container>
         )
     }

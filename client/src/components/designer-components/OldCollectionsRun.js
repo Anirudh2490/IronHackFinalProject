@@ -19,9 +19,10 @@ const OldCollectionRuns = (props) =>
                         <Card.Text>
                             {props.about}
                         </Card.Text>
+                        <Card.Text>| Cotton - 125 meters | 120 meters of Wool |</Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <Button variant="outline-success">25 Potential Suppliers</Button>
+                        <Button variant="outline-success">Get Suppliers Email List</Button>
                     </Card.Footer>
                 </Card>                        
             </Col>
@@ -33,9 +34,10 @@ const OldCollectionRuns = (props) =>
                         <Card.Text>
                             {props.about}
                         </Card.Text>
+                        <Card.Text>| Cotton - 125 meters | 120 meters of Wool |</Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <Button variant="outline-success">25 Potential Suppliers</Button>
+                        <Button variant="outline-success">Get Suppliers Email List</Button>
                     </Card.Footer>
                 </Card>                        
             </Col>
@@ -47,9 +49,10 @@ const OldCollectionRuns = (props) =>
                         <Card.Text>
                             {props.about}
                         </Card.Text>
+                        <Card.Text>| Cotton - 125 meters | 120 meters of Wool |</Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <Button variant="outline-success">25 Potential Suppliers</Button>
+                        <Button variant="outline-success">Get Suppliers Email List</Button>
                     </Card.Footer>
                 </Card>                        
             </Col>
