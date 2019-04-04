@@ -27,14 +27,14 @@ authRoutes.post("/register-user", (req, res, next) => {
     return;
   }
 
-  User.findOne({ full_name }, (err, foundUser) => {
+  User.findOne({ email }, (err, foundUser) => {
     if (err) {
-      res.status(500).json({ message: "full_name check went bad." });
+      res.status(500).json({ message: "email check went bad." });
       return;
     }
 
     if (foundUser) {
-      res.status(400).json({ message: "full_name taken. Choose another one." });
+      res.status(400).json({ message: "email taken. Choose another one." });
       return;
     }
 

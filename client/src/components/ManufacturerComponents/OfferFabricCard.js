@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Form, Col, Row } from "react-bootstrap";
-import Calendar from 'react-calendar';
 import DatePicker from '../designer-components/DatePicker'
 
 
