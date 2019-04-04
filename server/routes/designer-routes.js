@@ -6,7 +6,7 @@ const Collection = require('../models/Collections');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, './uploads');
+        cb(null, './uploads/');
     },
     filename: function(req, file, cb) {
         cb(null, new Date().toISOString() + file.originalname)
@@ -41,13 +41,14 @@ router.get('/list-designers', (req, res, next) => {
 });
 
 router.post('/create-designer', upload.array('image_gallery', 10), (req, res, next) => {
+
     const images = [];
     if(req.files) {
         req.files.forEach(function(item) {
             images.push(item.path);
         })        
     }
-    
+
     Designer.create({
         user_id: req.user._id,
         brand_name: req.body.brand,

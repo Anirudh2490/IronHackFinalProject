@@ -76,7 +76,7 @@ class App extends Component {
           {/* Two signup : one for designers, one for manufacturers */}
           <ProtectedRoute user={this.state.loggedInUser} exact path="/manufacturers" component={ManufacturerPublic} />
           <Route exact path="/manufacturer-registration" component={ManufactureForm} />
-          <ProtectedRoute user={this.state.loggedInUser} exact path="/designer-registration" component={DesignerForm} />
+          <Route user={this.state.loggedInUser} exact path="/designer-registration" component={DesignerForm} />
           <ProtectedRoute user={this.state.loggedInUser} exact path="/manufacturers-private" component={ManufacturerPrivate} />
           <ProtectedRoute user={this.state.loggedInUser} exact path="/manufacturers-profile" component={ManufacturerProfile} />
           <ProtectedRoute user={this.state.loggedInUser} exact path="/designers-profile" component={DesignerProfile} />
