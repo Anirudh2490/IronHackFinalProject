@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import ManufacturerProfileCard from "../ManufacturerComponents/ManufacturerProfileCard";
 import OfferACollectionCard from "../ManufacturerComponents/OfferFabricCard";
+import FabricsOffered from './FabricsOffered';
+
 
 class ManufacturerDetails extends Component {
   state = {
@@ -18,15 +20,31 @@ class ManufacturerDetails extends Component {
       about: "I like stripes",
       fabricsavailable: [
         {
-          type: "Cotton",
-          amount: "500 meters",
-          available_from: "",
-          available_till: "24/05/2019", //Optional field
+          type: "Wool",
+          amount: "200 meters",
+          availableFrom: "Dec 12th, 2018",
+          availableTill: "24/05/2019", //Optional field
+          aboutFabric: "This is the fabric from processing scrap clothes" //Optional field
+        },
+        {
+          type: "Nylon",
+          amount: "120 meters",
+          availableFrom: "Dec 21st, 2018",
+          availableTill: "24/05/2019", //Optional field
+          aboutFabric: "This is the fabric from disposed winterwear" //Optional field
+        },
+        {
+          type: "Wool",
+          amount: "600 meters",
+          availableFrom: "Jan 18th, 2019",
+          availableTill: "24/05/2019", //Optional field
           aboutFabric: "This is the fabric from processing scrap clothes" //Optional field
         }
       ]
     }
   };
+
+  
 
   render() {
     return (
@@ -46,6 +64,18 @@ class ManufacturerDetails extends Component {
           <OfferACollectionCard />
           {/* <------- */}
           </Col>
+        </Row>
+        <br /><br />
+        <Row>
+          <Col>
+          <h1>Fabrics Available</h1>
+          </Col>
+        </Row>
+        <br/><br/><br/>
+        <Row>
+        {this.state.manufacturer.fabricsavailable.map((fabric, index) =>
+            <Col><FabricsOffered fabrictype={fabric.type} availableFrom={fabric.availableFrom} availableTill={fabric.availableTill} aboutFabric={fabric.aboutFabric}/></Col>
+            )}
         </Row>
       </Container>
     );

@@ -1,14 +1,18 @@
 import React from "react";
 import { Button, Form, Col, Row } from "react-bootstrap";
+import Calendar from 'react-calendar';
+import DatePicker from '../designer-components/DatePicker'
+
 
 let fabricList = [];
 const OfferFabricCard = props => (
   <div>
     <h2>Sell your fabrics leftovers</h2>
+    <br/>
     <Row>
       <Col sm={6}>
           <Form.Group controlId="fabricType">
-            <Form.Label>Which fabric would you like to buy?</Form.Label>
+            <Form.Label>Which fabric are you selling?</Form.Label>
             <Form.Control
               required
               name="type"
@@ -27,14 +31,14 @@ const OfferFabricCard = props => (
       </Col>
         <Col>
           <Form.Group controlId="fabricQty">
-            <Form.Label>How many meters are you selling ?</Form.Label>
+            <Form.Label>Quantity of fabric being sold ?</Form.Label>
             <Form.Control
               required
               name="quantity"
               value={props.quantity}
               onChange={e => props.fabricDetailsHandler(e)}
               type="input"
-            />
+            /> (In Meters)
           </Form.Group>
         </Col>
     </Row>
@@ -50,8 +54,6 @@ const OfferFabricCard = props => (
           />
         </Form.Group>
       </Col>
-    </Row>
-    <Row>
       <Col>
         <Form.Group controlId="fabricQty">
           <Form.Label>Describe the fabric you are selling</Form.Label>
@@ -65,7 +67,15 @@ const OfferFabricCard = props => (
         </Form.Group>
       </Col>
     </Row>
-    <br />
+    <Row>
+      <Col>
+       <p>Fabric available from</p><DatePicker />
+       </Col>
+       <Col>
+       <p>Fabric available till</p><DatePicker />
+       </Col>
+    </Row>
+    <br/><br/>
     <Row>
       <Col>
         <Button onClick={props.addFabricHandler} variant="outline-success">
@@ -77,7 +87,6 @@ const OfferFabricCard = props => (
       <Col>
         <Form.Group controlId="finalOrder" />
         <p>
-          <strong>Total Fabric Needed</strong>
         </p>
         <p>{fabricList.map(item => item)}</p>
       </Col>
