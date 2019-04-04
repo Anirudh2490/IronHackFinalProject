@@ -53,7 +53,7 @@ router.post('/create-manufacturer', upload.single('logo'), (req, res, next) => {
 		service: req.body.service
 	})
 		.then(response => { res.json(response) })
-		.catch(error => { error.json(error) });
+		.catch(error => { res.json(error) });
 });
 
 module.exports = router;

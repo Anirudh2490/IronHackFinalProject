@@ -82,7 +82,7 @@ const OfferFabricCard = props => (
         <p>{fabricList.map(item => item)}</p>
       </Col>
     </Row>
-    </div>
+  </div>
 );
 
 export default OfferFabricCard;
