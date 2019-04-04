@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, Col, Row } from 'react-bootstrap';
-// import Calendar from './DatePicker';
+import { withRouter } from 'react-router-dom';
 import Calendar from 'react-calendar'
 
 
@@ -57,12 +57,12 @@ class AddFabricCard extends Component {
                         </Col>
                     </Row>
                     <Row>
-                            <Col>
-                                <Form.Group controlId="fabricPlan">
-                                    <Form.Label>How do you plan to use it?</Form.Label>
-                                    <Form.Control name="plans" value={this.state.plans} onChange={e => this.handleChange(e)} type='text' placeholder='Optional'></Form.Control>
-                                </Form.Group>
-                            </Col>
+                        <Col>
+                            <Form.Group controlId="fabricPlan">
+                                <Form.Label>How do you plan to use it?</Form.Label>
+                                <Form.Control name="plans" value={this.state.plans} onChange={e => this.handleChange(e)} type='text' placeholder='Optional'></Form.Control>
+                            </Form.Group>
+                        </Col>
                     </Row><br/>
                     <Row>
                         <Col>
@@ -74,4 +74,4 @@ class AddFabricCard extends Component {
         )
     }
 }
-export default AddFabricCard;
+export default withRouter(AddFabricCard);

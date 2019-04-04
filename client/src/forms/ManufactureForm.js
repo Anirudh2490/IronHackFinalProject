@@ -3,6 +3,8 @@ import Form from "react-bootstrap/Form";
 import { Button, Col } from "react-bootstrap";
 import AuthService from "../components/auth/auth-service";
 import content from '../text.json'
+import axios from 'axios';
+const BASE_URL = 'http://localhost:3001/api';
 
 class ManufactureForm extends Component {
   constructor(props) {
@@ -15,10 +17,12 @@ class ManufactureForm extends Component {
       zip_code: "",
       state: "",
       country: "",
-      logo: "",
-      service: ""
+      logo: null,
+      service: "",
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.fileSelectHandler = this.fileSelectHandler.bind(this);
     this.service = new AuthService();
   }
 
@@ -27,27 +31,31 @@ class ManufactureForm extends Component {
     this.setState({ [name]: value });
   }
 
-  handleFormSubmit(event) {
+  fileSelectHandler = event => {
+    this.setState({
+        logo: event.target.files[0]
+    })
+  }
+
+  handleFormSubmit(event) { 
     event.preventDefault();
-    const formData = {
-      business_name: this.state.business_name,
-      address: this.state.address,
-      city: this.state.city,
-      zip_code: this.state.zip_code,
-      state: this.state.state,
-      country: this.state.country,
-      logo: this.state.logo,
-      service: this.state.service
-    };
-    this.service
-      .createManufacturer(formData)
-      .then(response => {
-        console.log("yes", response);
+    const fd = new FormData();
+    fd.append('logo', this.state.logo, this.state.logo.name)
+    fd.append('name_of_business', this.state.business_name)
+    fd.append('address', this.state.address)
+    fd.append('city', this.state.city)
+    fd.append('zip_code', this.state.zip_code)
+    fd.append('state', this.state.state)
+    fd.append('country', this.state.country)
+    fd.append('service', this.state.service)
+
+    this.service.createManufacturer(fd)
+      .then((response) => {
         this.props.history.push('/profile')
-      })
-      .catch(error => {
-        console.log("error: " + error);
-      });
+        console.logo(response)
+          }).catch((error) => {
+            console.log("error: " + error);
+        });
   }
 
   render() {
@@ -154,8 +162,7 @@ class ManufactureForm extends Component {
                   required
                   type="file"
                   name="logo"
-                  value={this.state.logo}
-                  onChange={e => this.handleChange(e)}
+                  onChange={this.fileSelectHandler}
                 />
               </Form.Group>
 

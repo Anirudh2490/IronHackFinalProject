@@ -20,8 +20,8 @@ class ManufacturerPublic extends Component {
   }
 
   render() {
-    const fabricListsItems = this.state.fabricLists.map(item => (
-      <div className="fabric-listed-manufacturer-public">
+    const fabricListsItems = this.state.fabricLists.map((item, index) => (
+      <div className="fabric-listed-manufacturer-public" key={index}>
         <h5>{item.fabricType}</h5>
         <div className="price">{item.unit_cost}€ /meter</div>
         <div className="amount">{item.quantity} meter</div>
