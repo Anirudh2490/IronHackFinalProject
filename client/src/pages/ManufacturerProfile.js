@@ -1,14 +1,13 @@
 import React from "react";
 import "../App.css";
 import axios from "axios";
+
 import ManufacturerDetails from "../components/ManufacturerComponents/ManufacturerDetails";
 
-const ManufacturerProfile = () => {
-  // Will compose of the following components
-  // Manufacturer Name, Brand Name
+const ManufacturerProfile = (props) => {
   return (
     <div className="container">
-      <ManufacturerDetails />
+      <ManufacturerDetails userInSession={props.userInSession} />
     </div>
   );
 };

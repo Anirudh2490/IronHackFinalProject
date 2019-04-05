@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import { Button, Col } from "react-bootstrap";
 import AuthService from "../components/auth/auth-service";
-import content from '../text.json'
+import content from '../text.json';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 const BASE_URL = 'http://localhost:3001/api';
 
@@ -52,7 +53,7 @@ class ManufactureForm extends Component {
     this.service.createManufacturer(fd)
     .then(res => {
         console.log(res);
-        this.props.history.push('/profile')
+        this.props.history.push('/manufacturers-profile')
       })
       .catch(error => {
         console.log("No" + error);
@@ -194,4 +195,4 @@ class ManufactureForm extends Component {
   }
 }
 
-export default ManufactureForm;
+export default withRouter(ManufactureForm);

@@ -10,6 +10,7 @@ class ManufacturerDetails extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      loggedInUser: null,
       userItem: {
         full_name:'',
         email:'',
@@ -58,9 +59,30 @@ class ManufacturerDetails extends Component {
           .catch(error => console.log(error));
     }
 
+    getManufacturer() {
+      this.service.getManufacturer()
+          .then(res => {
+              this.setState( prevState => {
+                  return {
+                      manufacturer: {
+                          ...prevState.manufacturer,
+                          businessname: res.businessname,
+                          businesslogo: res.businesslogo,
+                          address: res.address,
+                          city: res.city,
+                          state: res.state,
+                          country: res.country,
+                          zip_code: res.zip_code,
+                          about: res.about
+                      }
+                  }
+              })
+          }).catch(error => console.log(error))
+  }
+
     componentDidMount() {
       this.getUser();
-      // this.getManufacturer();
+      this.getManufacturer();
       this.getManFabrics();
     }
 
@@ -250,7 +272,6 @@ class ManufacturerDetails extends Component {
         </Row>
         <br/><br/><br/>
         <Row>
-        
         {this.state.fabricsavailable.map((fabric, index) =>
             <Col key={index}><FabricsOffered fabrictype={fabric.fabricType} availableFrom={fabric.availableFrom} availableTill={fabric.availableTill} aboutFabric={fabric.plans}/></Col>
             )}
