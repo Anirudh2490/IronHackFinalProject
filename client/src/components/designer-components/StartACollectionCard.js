@@ -11,10 +11,10 @@ class StartACollectionCard extends Component {
     constructor(props) {
         super(props);
         this.state={
-            fabrics:[{category: "", amount: "", plans:"" }],
-            collectionName:"",
-            aboutCollection:'',
-            launchDate:''
+            fabrics:[{category: null, amount: null, plans:null }],
+            collectionName: null,
+            aboutCollection: null,
+            launchdate:null
         }
         this.dateHandler = this.dateHandler.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -58,9 +58,9 @@ class StartACollectionCard extends Component {
             .then(res => {
                 console.log("success" + res);
                 this.setState({
-                    collectionName: '',
-                    aboutCollection: '',
-                    launchdate: '',
+                    collectionName: null,
+                    aboutCollection: null,
+                    launchdate: null,
                     fabrics: []
                 })
             })
@@ -99,7 +99,7 @@ class StartACollectionCard extends Component {
                         <br />
                         <Form.Label>Approximately what date will you launch your collection?</Form.Label>
                         <Calendar onChange={this.dateHandler} value={this.state.launchdate}/><br/>
-                        <Button type="submit" variant="primary">Start Collection Drive</Button>
+                        <Button type="submit" variant="primary" onClick={() => window.location.reload()}>Start Collection Drive</Button>
                     </Form>
                 </Card>
             </Col>
