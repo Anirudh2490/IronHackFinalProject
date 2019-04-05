@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form, Container, Col, Row } from "react-bootstrap";
 import ManufacturerProfileCard from "../ManufacturerComponents/ManufacturerProfileCard";
-import OfferACollectionCard from "../ManufacturerComponents/OfferFabricCard";
+// import OfferACollectionCard from "../ManufacturerComponents/OfferFabricCard";
 import FabricsOffered from './FabricsOffered';
 import AuthService from '../auth/auth-service';
 import Calendar from 'react-calendar'
@@ -178,7 +178,6 @@ class ManufacturerDetails extends Component {
             label={this.state.manufacturer.brand_name}
             email={this.state.userItem.email}
             logo={this.state.manufacturer.businesslogo}
-            fabricsavailable={this.state.manufacturer.fabricsavailable}
           />
           </Col>
           <Col>
@@ -287,7 +286,7 @@ class ManufacturerDetails extends Component {
         </Row>
         <br/><br/><br/>
         <Row>
-            <FabricsOffered fabrictype={this.state.fabricType} availableFrom={this.state.availableFrom} availableTill={this.state.availableTill} aboutFabric={this.state.plans}/>
+            <FabricsOffered fabrics={this.state.fabricsavailable} />
         </Row>
       </Container>
     );
