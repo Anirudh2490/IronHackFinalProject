@@ -54,7 +54,7 @@ export default class NavbarHeader extends React.Component {
                     <Link to="/designers-profile"> Designers </Link>
                   </NavItem>
                   <NavItem className="active link-navbar">
-                    <Link to="/manufacturers-private"> Manufacturers </Link>
+                    <Link to="/manufacturers"> Manufacturers </Link>
                   </NavItem>
                 </React.Fragment>
               ) : (

@@ -89,7 +89,7 @@ class DesignerForm extends Component {
 			.createDesigner(fd)
 			.then(res => {
 				console.log(res);
-				this.props.history.push('/profile')
+				this.props.history.push('/designers-profile')
 			})
 			.catch(error => {
 				console.log("No" + error);

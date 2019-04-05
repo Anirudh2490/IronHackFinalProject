@@ -7,6 +7,7 @@ const DesignerProfileCards = props => (
       <Card.Img variant="top" src="../images/avatar.png" />
       <Card.Body>
         <Card.Title>{props.user.full_name}</Card.Title>
+        <Card.Title>{props.user.brandname}</Card.Title>
         <Card.Title>Email: {props.user.email}</Card.Title>
         <Card.Text>{props.designer.design_inspiration}</Card.Text>
         <Card.Text>I design and create → {props.designer.category_types}</Card.Text>

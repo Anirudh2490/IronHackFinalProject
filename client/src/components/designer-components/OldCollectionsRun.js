@@ -6,7 +6,7 @@ const OldCollectionRuns = (props) =>
     <div>
         <Row>
             <Col>
-                <h3>{props.brandname}s Collection Drives</h3>
+                <h3>{props.brandname}'s Collection Drives</h3>
             </Col>
         </Row>
             <br /><br /><br />
@@ -25,7 +25,7 @@ const OldCollectionRuns = (props) =>
                                 item.fabrics.map((f, i) => {  return f.category +"-"+ f.amount + " Meters"}) }</Card.Text>
                         </Card.Body>
                         <Card.Footer>
-                            <Button variant="outline-success">Get Suppliers Email List</Button>
+                            <Button variant="outline-success" type="submit">Get Suppliers Email List</Button>
                         </Card.Footer>
                     </Card>
                 </Col>               

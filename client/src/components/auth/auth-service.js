@@ -80,6 +80,11 @@ class AuthService {
             .then(response => response.data);
     }
 
+    getManufacturer = () => {
+        return this.service.get('/single-manufacturer')
+            .then(response => response.data);
+    }
+
     getCollection = () => {
         return this.service.get('/collections')
             .then(response => response.data);

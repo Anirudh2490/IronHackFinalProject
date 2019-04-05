@@ -9,7 +9,7 @@ import AuthService from '../auth/auth-service';
 const DesignerGalleryCard = (props) => 
     <Row>
         <Col>
-            <h3>{props.brand_name} Latest Designs</h3>
+            <h3>{props.brand_name}'s Latest Designs</h3>
             <SampleGallery imagesList={props.images} />
         </Col>
     </Row>
