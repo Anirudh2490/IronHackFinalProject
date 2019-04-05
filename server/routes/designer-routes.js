@@ -40,11 +40,10 @@ router.get('/list-designers', (req, res, next) => {
         })
 });
 
-router.post('/create-designer', upload.array('image_gallery', 10), (req, res, next) => {
-
+router.post('/create-designer', upload.fields([{name: 'logo', maxCount: 1}, { name: 'image_gallery', maxCount: 10}]), (req, res, next) => {
     const images = [];
-    if(req.files) {
-        req.files.forEach(function(item) {
+    if(req.files.image_gallery) {
+        req.files.image_gallery.forEach(function(item) {
             images.push(item.path);
         })        
     }
@@ -61,7 +60,8 @@ router.post('/create-designer', upload.array('image_gallery', 10), (req, res, ne
         product_types: req.body.product_types,
         images: images,
         fabric_types: req.body.fabric_types,
-        category_types: req.body.category_types
+        category_types: req.body.category_types,
+        logo_path: req.files.logo[0].path
     }).then(response => { res.json(response) }).catch(err => { err.json(err) });
 });
 

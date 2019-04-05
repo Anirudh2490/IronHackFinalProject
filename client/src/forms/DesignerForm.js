@@ -19,6 +19,7 @@ class DesignerForm extends Component {
 			design_inspiration: "",
 			product_types: "",
 			image_gallery: null,
+			logo: null,
 			accessories: false,
 			pants: false,
 			shirts: false,
@@ -34,6 +35,7 @@ class DesignerForm extends Component {
 		};
 		this.handleFormSubmit = this.handleFormSubmit.bind(this);
 		// this.fileSelectHandler = this.fileSelectHandler.bind(this);
+		this.logoSelectHandler = this.logoSelectHandler.bind(this);
 		this.service = new AuthService();
 	}
 
@@ -49,6 +51,12 @@ class DesignerForm extends Component {
 		// let message = `${images.length} valid image(s) selected`
 		this.setState({ image_gallery: event.target.files })
 	}
+
+	logoSelectHandler = event => {
+    this.setState({
+        logo: event.target.files[0]
+    })
+  }
 
 	handleChange(event) {
 		const { name, value } = event.target;
@@ -83,6 +91,7 @@ class DesignerForm extends Component {
     fd.append('product_types', this.state.product_types)
     fd.append('category_types', category_types)
     fd.append('fabric_types', fabric_types_array)
+    fd.append('logo', this.state.logo, this.state.logo.name)
 
 
 		this.service
@@ -197,7 +206,17 @@ class DesignerForm extends Component {
 								/>
 							</Form.Group>
 						</Form.Row>
-
+						<Form.Row>
+							<Form.Group as={Col} md="6">
+                <Form.Label>Upload the logo of your business</Form.Label>
+                <Form.Control
+                  required
+                  type="file"
+                  name="logo"
+                  onChange={this.logoSelectHandler}
+                />
+              </Form.Group>
+						</Form.Row>
 						<Form.Row>
 							<Form.Group as={Col} md="12">
 								<Form.Label>

@@ -15,6 +15,7 @@ const designerSchema = new Schema({
 	design_inspiration: { type: String, require: true },
 	product_types: { type: String, required: true },
 	images: { type: Array, required: true },
+	logo_path: { type: String, required: true },
 	category_types: { type: Array, required: false },
 	fabric_types: { type: Array, required: false },
 	collections:{ type: Schema.Types.ObjectId, ref: 'Collections' }

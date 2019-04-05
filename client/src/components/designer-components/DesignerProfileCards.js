@@ -4,7 +4,7 @@ import { Card, Button, Col } from "react-bootstrap";
 const DesignerProfileCards = props => (
   <Col sm={4}>
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="../images/avatar.png" />
+      <Card.Img variant="top" src={"http://localhost:3001/" + props.designer.logo_path} />
       <Card.Body>
         <Card.Title>{props.user.full_name}</Card.Title>
         <Card.Title>{props.user.brandname}</Card.Title>

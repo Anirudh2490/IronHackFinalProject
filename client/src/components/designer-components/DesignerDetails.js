@@ -23,19 +23,20 @@ class DesignerDetails extends Component {
             loggedInUser: null,
             userItem: {
                 full_name:'',
-                email:'janedoe@gmail.com',
+                email:'',
             },
             designerItem: {    
-                brandname: "Nico",
-    			address: "123 Nico Default",
-    			city: "Berlin",
-    			state: "Berlin",
-    			country: "Germany",
-    			zipcode: "10553",
-    			design_inspiration: "I like stripes, checked T-Shirts, Flannels and dope hoodies. Check out my collection!",
+                brandname: "",
+    			address: "",
+    			city: "",
+    			state: "",
+    			country: "",
+    			zipcode: "",
+    			design_inspiration: "",
     			category_types: null,
                 images: [],
-                fabric_types: null
+                fabric_types: null,
+                logo_path: ''
             },
             collections:[]
         };
@@ -75,7 +76,8 @@ class DesignerDetails extends Component {
                                 design_inspiration: res.design_inspiration,
                                 category_types: res.category_types,
                                 fabric_types: res.fabric_types,
-                                images: res.images
+                                images: res.images,
+                                logo_path: res.logo_path
                             }
                         }
                     })                    

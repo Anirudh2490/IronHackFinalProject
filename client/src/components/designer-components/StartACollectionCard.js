@@ -12,8 +12,8 @@ class StartACollectionCard extends Component {
         super(props);
         this.state={
             fabrics:[{category: null, amount: null, plans:null }],
-            collectionName: null,
-            aboutCollection: null,
+            collectionName: '',
+            aboutCollection: '',
             launchdate:null
         }
         this.dateHandler = this.dateHandler.bind(this);
