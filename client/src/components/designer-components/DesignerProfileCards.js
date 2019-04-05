@@ -6,11 +6,10 @@ const DesignerProfileCards = props => (
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src="../images/avatar.png" />
       <Card.Body>
-        <Card.Title>{props.name}</Card.Title>
-        <Card.Title>Label: {props.label}</Card.Title>
-        <Card.Title>Email: {props.email}</Card.Title>
-        <Card.Text>{props.design_inspiration}</Card.Text>
-        <Card.Text>I design and create → {props.product_types}</Card.Text>
+        <Card.Title>{props.user.full_name}</Card.Title>
+        <Card.Title>Email: {props.user.email}</Card.Title>
+        <Card.Text>{props.designer.design_inspiration}</Card.Text>
+        <Card.Text>I design and create → {props.designer.category_types}</Card.Text>
         <Button variant="outline-secondary">Edit Details</Button>
       </Card.Body>
     </Card>

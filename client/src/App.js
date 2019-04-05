@@ -80,7 +80,8 @@ class App extends Component {
           <Route user={this.state.loggedInUser} exact path="/designer-registration" component={DesignerForm} />
           {/* <ProtectedRoute user={this.state.loggedInUser} exact path="/manufacturers-private" component={ManufacturerPrivate} /> */}
           {/* <ProtectedRoute user={this.state.loggedInUser} exact path="/manufacturers-profile" component={ManufacturerProfile} /> */}
-          <Route user={this.state.loggedInUser} exact path="/designers-profile" component={DesignerProfile} />
+          {/*<Route user={this.state.loggedInUser} exact path="/designers-profile" component={DesignerProfile} />*/}
+          <Route exact path="/designers-profile" render={(props) => <DesignerProfile {...props} userInSession={this.state.loggedInUser} />} />
           {/* <ProtectedRoute user={this.state.loggedInUser} exact path="/designers" component={DesignerPrivate} /> */}
           <Route exact path="/concept" component={Concept} />
           {/* <ProtectedRoute user={this.state.loggedInUser} exact path="/profile" component={MyProfile} /> */}

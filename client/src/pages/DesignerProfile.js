@@ -3,12 +3,12 @@ import "../App.css";
 import axios from "axios";
 import DesignerDetails from "../components/designer-components/DesignerDetails";
 
-const DesignerProfile = () => {
+const DesignerProfile = (props) => {
   // Will compose of the following components
   // Designer Name, Brand Name
   return (
     <div className="container">
-      <DesignerDetails />
+      <DesignerDetails userInSession={props.userInSession} />
     </div>
   );
 };

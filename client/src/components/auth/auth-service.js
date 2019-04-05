@@ -69,6 +69,21 @@ class AuthService {
         return this.service.post('/create-collection', params)
             .then(response => response.data);
     }
+
+    getUser = () => {
+        return this.service.get('/user')
+            .then(response => response.data);
+    }
+
+    getDesigner = () => {
+        return this.service.get('/single-designer')
+            .then(response => response.data);
+    }
+
+    getCollection = () => {
+        return this.service.get('/collections')
+            .then(response => response.data);
+    }
 }
 
 export default AuthService;
