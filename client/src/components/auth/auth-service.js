@@ -84,6 +84,16 @@ class AuthService {
         return this.service.get('/collections')
             .then(response => response.data);
     }
+
+    createManFabric = (params) => {
+        return this.service.post('/create-man-fabric', params)
+            .then(response => response.data);
+    }
+
+    getManFabrics = (params) => {
+        return this.service.get('/list-man-fabrics')
+            .then(response => response.data)
+    }
 }
 
 export default AuthService;

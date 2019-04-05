@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const Manufacturer = require('../models/Manufacturer');
+const Fabric = require('../models/Fabric');
 const multer = require('multer');
 const storage = multer.diskStorage({
 	destination: function(req, file, cb) {
@@ -54,6 +55,32 @@ router.post('/create-manufacturer', upload.single('logo'), (req, res, next) => {
 	})
 		.then(response => { res.json(response) })
 		.catch(error => { res.json(error) });
+});
+
+router.post('/create-man-fabric', (req, res, next) => {
+	console.log(req.body)
+	 Fabric.create({
+    		user_id: req.user._id,
+    		// man_id: req.body.man_id,
+        fabricType: req.body.fabricType,
+        quantity: req.body.quantity,
+        unit_cost: req.body.unit_cost,
+        plans: req.body.plans,
+        availableFrom: req.body.availableFrom,
+        availableTill: req.body.availableTill,
+		})
+		.then(response => {res.json(response)})
+    .catch(err => {res.json(err)});
+})
+
+router.get('/list-man-fabrics', (req, res, next) => {
+	Fabric.find({user_id: req.user._id}).exec()
+		.then(docs => {
+				res.json(docs);
+		})
+		.catch(error => {
+			res.json(error);
+		});
 });
 
 module.exports = router;
