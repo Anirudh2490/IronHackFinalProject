@@ -272,9 +272,7 @@ class ManufacturerDetails extends Component {
         </Row>
         <br/><br/><br/>
         <Row>
-        {this.state.fabricsavailable.map((fabric, index) =>
-            <Col key={index}><FabricsOffered fabrictype={fabric.fabricType} availableFrom={fabric.availableFrom} availableTill={fabric.availableTill} aboutFabric={fabric.plans}/></Col>
-            )}
+            <FabricsOffered fabrictype={this.state.fabricType} availableFrom={this.state.availableFrom} availableTill={this.state.availableTill} aboutFabric={this.state.plans}/>
         </Row>
       </Container>
     );
