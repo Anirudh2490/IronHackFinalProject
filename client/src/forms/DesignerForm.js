@@ -14,7 +14,7 @@ class DesignerForm extends Component {
 			address: "",
 			city: "",
 			state: "",
-			zipcode: "",
+			zip_code: "",
 			country: "",
 			design_inspiration: "",
 			product_types: "",
@@ -112,7 +112,7 @@ class DesignerForm extends Component {
 									type="text"
 									name="brand_name"
 									placeholder="Enter your brand name"
-									value={this.state.brand}
+									value={this.state.brand_name}
 									onChange={e => this.handleChange(e)} />
 							</Form.Group>
 						</Form.Row>
@@ -140,10 +140,10 @@ class DesignerForm extends Component {
 								<Form.Control
 									required
 									type="text"
-									name="zipcode"
-									value={this.state.zipcode}
+									name="zip_code"
+									value={this.state.zip_code}
 									onChange={e => this.handleChange(e)} />
-								{isNaN(this.state.zipcode) ? <p className='error-message' > {content.errorMessage.errorMessageZipCode}</p> : ''}
+								{isNaN(this.state.zip_code) ? <p className='error-message' > {content.errorMessage.errorMessageZipCode}</p> : ''}
 
 							</Form.Group>
 

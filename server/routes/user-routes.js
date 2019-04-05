@@ -28,5 +28,11 @@ userRoutes.get("/profile", (req, res) => {
 	}
 })
 
+userRoutes.get('/user', (req, res, next) => {
+	User.findOne({ _id:  req.user._id }).select("full_name email").exec()
+	.then((o) => { res.json(o) })
+	.catch((e) => { res.json(e) })
+})
+
 module.exports = userRoutes;
 

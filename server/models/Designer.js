@@ -10,7 +10,7 @@ const designerSchema = new Schema({
 	address: { type: String, require: true },
 	city: { type: String, require: true },
 	state: { type: String, require: true },
-	zipcode: { type: Number, require: true },
+	zip_code: { type: Number, require: true },
 	country: { type: String, require: true },
 	design_inspiration: { type: String, require: true },
 	product_types: { type: String, required: true },

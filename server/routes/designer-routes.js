@@ -51,11 +51,11 @@ router.post('/create-designer', upload.array('image_gallery', 10), (req, res, ne
 
     Designer.create({
         user_id: req.user._id,
-        brand_name: req.body.brand,
+        brand_name: req.body.brand_name,
         address: req.body.address,
         city: req.body.city,
         state: req.body.state,
-        zipcode: req.body.zipcode,
+        zip_code: req.body.zip_code,
         country: req.body.country,
         design_inspiration: req.body.design_inspiration,
         product_types: req.body.product_types,
@@ -75,4 +75,13 @@ router.post('/create-collection', (req, res, next) => {
     }).then(response => { res.json(response)}).catch(err => { err.json(err) });
 });
 
+router.get('/single-designer', (req, res, next) => {
+    Designer.findOne({ user_id:  req.user._id })
+    .then((o) => {res.json(o)}).catch((e) => { res.json(e) })
+})
+
+router.get('/collections', (req, res, next) => {
+    Collection.find({ user_id: req.user._id })
+    .then((o) => {res.json(o)}).catch((e) => { res.json(e) })
+})
 module.exports = router;
