@@ -13,7 +13,7 @@ const OldCollectionRuns = (props) =>
         <Row>
         {props.collection.map((item, i) => { 
             return(
-                <Col>
+                <Col key={i}>
                     <Card bg="light">
                         <Card.Header>Collection Launch Date - {item.launchDate}.</Card.Header>
                         <Card.Body>

@@ -50,12 +50,19 @@ class ManufactureForm extends Component {
     fd.append('service', this.state.service)
 
     this.service.createManufacturer(fd)
-      .then((response) => {
+    .then(res => {
+        console.log(res);
         this.props.history.push('/profile')
-        console.logo(response)
-          }).catch((error) => {
-            console.log("error: " + error);
-        });
+      })
+      .catch(error => {
+        console.log("No" + error);
+      });
+      // .then((response) => {
+      //   this.props.history.push('/profile')
+      //   console.logo(response)
+      //     }).catch((error) => {
+      //       console.log("error: " + error);
+      //   });
   }
 
   render() {

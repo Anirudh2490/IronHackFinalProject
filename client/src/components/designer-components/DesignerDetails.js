@@ -42,11 +42,6 @@ class DesignerDetails extends Component {
         this.service = new AuthService();
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] });
-
-    // }
-
     getUser() {
         this.service.getUser()
             .then(res => {
