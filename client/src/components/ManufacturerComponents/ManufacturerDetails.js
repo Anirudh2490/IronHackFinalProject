@@ -286,7 +286,7 @@ class ManufacturerDetails extends Component {
         </Row>
         <br/><br/><br/>
         <Row>
-            <FabricsOffered fabrics={this.state.fabricsavailable} />
+            <FabricsOffered fabrics={[]} />
         </Row>
       </Container>
     );

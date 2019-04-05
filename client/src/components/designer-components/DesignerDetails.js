@@ -61,23 +61,27 @@ class DesignerDetails extends Component {
     getDesigner() {
         this.service.getDesigner()
             .then(res => {
-                this.setState( prevState => {
-                    return {
-                        designerItem: {
-                            ...prevState.designerItem,
-                            brand_name: res.brand_name,
-                            address: res.address,
-                            city: res.city,
-                            state: res.state,
-                            country: res.country,
-                            zip_code: res.zip_code,
-                            design_inspiration: res.design_inspiration,
-                            category_types: res.category_types,
-                            fabric_types: res.fabric_types,
-                            images: res.images
+                if(res){
+                    this.setState( prevState => {
+                        return {
+                            designerItem: {
+                                ...prevState.designerItem,
+                                brand_name: res.brand_name,
+                                address: res.address,
+                                city: res.city,
+                                state: res.state,
+                                country: res.country,
+                                zip_code: res.zip_code,
+                                design_inspiration: res.design_inspiration,
+                                category_types: res.category_types,
+                                fabric_types: res.fabric_types,
+                                images: res.images
+                            }
                         }
-                    }
-                })
+                    })                    
+                }else{
+                    // alert("logout and login through designer signup");
+                }
             }).catch(error => console.log(error))
     }
 
@@ -112,7 +116,7 @@ class DesignerDetails extends Component {
                     {/* <------- */}
                     <br></br><br></br>
                     {/* OldCollectionRuns --------> */}
-                    <OldCollectionRuns brandname={this.state.designerItem.brand_name} collection={this.state.collections} />
+                    <OldCollectionRuns brandname={this.state.designerItem.brand_name} collection={this.state.collections.length > 0 ? this.state.collections : []} />
 
                     {/*<OldCollectionRuns brandname={this.state.designerItem.brand_name} deadline={this.state.designerItem.collections[0].fabrics[0].collectiondeadline} name={this.state.designerItem.collections[0].name} about={this.state.designerItem.collections[0].about}/>*/}
                     </Container>
