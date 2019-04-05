@@ -14,16 +14,7 @@ class ManufacturerDetails extends Component {
         full_name:'',
         email:'',
       },
-      manufacturer: {
-        businessname: "AR Enterprises",
-        businesslogo: "",
-        address: "123 AR Default",
-        city: "Berlin",
-        state: "Berlin",
-        country: "Germany",
-        zipcode: "10553",
-        about: "I like stripes",
-      }, 
+      manufacturer: [], 
       fabricsavailable: [],
       
         fabricType: '',
@@ -60,7 +51,7 @@ class ManufacturerDetails extends Component {
 
     componentDidMount() {
       this.getUser();
-      // this.getManufacturer();
+      this.getManufacturer();
       this.getManFabrics();
     }
 
@@ -132,15 +123,39 @@ class ManufacturerDetails extends Component {
       }).catch(error => console.log(error))
   }
 
+  getManufacturer() {
+    this.service.getManufacturer()
+      .then(res => {
+        this.setState( prevState => {
+            return {
+              manufacturer: {
+                  ...prevState.manufacturer,
+                  brand_name: res.name_of_business,
+                  address: res.address,
+                  city: res.city,
+                  state: res.state,
+                  country: res.country,
+                  zip_code: res.zip_code,
+                  about: res.about,
+                  businesslogo: res.logo_path
+              }
+            }
+        })
+    }).catch(error => console.log(error))
+  }
+ 
   render() {
     return (
       <Container>
         <Row>
           <Col>{/* ------>  DesignerProfileCard*/}
+          {this.state.manufacturer.brand_name}
+          {this.state.userItem.email}
           <ManufacturerProfileCard
             name={this.state.userItem.full_name}
-            label={this.state.manufacturer.brandname}
+            label={this.state.manufacturer.brand_name}
             email={this.state.userItem.email}
+            logo={this.state.manufacturer.businesslogo}
             fabricsavailable={this.state.manufacturer.fabricsavailable}
           />
           </Col>

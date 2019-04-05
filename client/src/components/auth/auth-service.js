@@ -94,6 +94,11 @@ class AuthService {
         return this.service.get('/list-man-fabrics')
             .then(response => response.data)
     }
+
+    getManufacturer = (params) => {
+        return this.service.get('/single-manufacturer')
+            .then(response => response.data)
+    }
 }
 
 export default AuthService;

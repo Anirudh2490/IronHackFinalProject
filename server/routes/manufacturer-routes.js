@@ -83,4 +83,14 @@ router.get('/list-man-fabrics', (req, res, next) => {
 		});
 });
 
+router.get('/single-manufacturer', (req, res, next) => {
+	Manufacturer.findOne({ user_id: req.user._id }).select("name_of_business address city state country zip_code logo_path service ").exec()
+		.then(docs => {
+				res.json(docs);
+		})
+		.catch(error => {
+			res.json(error);
+		});
+})
+
 module.exports = router;
