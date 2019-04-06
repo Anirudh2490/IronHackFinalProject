@@ -145,26 +145,7 @@ class ManufacturerDetails extends Component {
       }).catch(error => console.log(error))
   }
 
-  getManufacturer() {
-    this.service.getManufacturer()
-      .then(res => {
-        this.setState( prevState => {
-            return {
-              manufacturer: {
-                  ...prevState.manufacturer,
-                  brand_name: res.name_of_business,
-                  address: res.address,
-                  city: res.city,
-                  state: res.state,
-                  country: res.country,
-                  zip_code: res.zip_code,
-                  about: res.about,
-                  businesslogo: res.logo_path
-              }
-            }
-        })
-    }).catch(error => console.log(error))
-  }
+
  
   render() {
     return (
