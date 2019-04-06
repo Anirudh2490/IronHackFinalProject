@@ -53,12 +53,13 @@ class ManufacturerDetails extends Component {
     getManufacturer() {
       this.service.getManufacturer()
           .then(res => {
+            console.log(res)
               this.setState( prevState => {
                   return {
                       manufacturer: {
                           ...prevState.manufacturer,
                           businessname: res.businessname,
-                          businesslogo: res.businesslogo,
+                          businesslogo: res.logo_path,
                           address: res.address,
                           city: res.city,
                           state: res.state,
