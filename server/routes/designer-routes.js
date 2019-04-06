@@ -4,6 +4,8 @@ const router = express.Router();
 const Designer = require('../models/Designer');
 const Collection = require('../models/Collections');
 const multer = require('multer');
+const Fabric = require('../models/Fabric');
+
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, './uploads/');
@@ -83,5 +85,12 @@ router.get('/single-designer', (req, res, next) => {
 router.get('/collections', (req, res, next) => {
     Collection.find({ user_id: req.user._id })
     .then((o) => {res.json(o)}).catch((e) => { res.json(e) })
+})
+
+router.post('/suppliers', (req, res, next) => {
+    Fabric.find({fabricType: req.body}).populate('user_id', 'full_name email').select('user_id').exec()
+        .then((o) => {
+            res.json(o)
+        }).catch((e) => { res.json(e) })
 })
 module.exports = router;

@@ -104,6 +104,12 @@ class AuthService {
         return this.service.get('/single-manufacturer')
             .then(response => response.data)
     }
+
+    getSuppliers = (params) => {
+        console.log("params"+params)
+        return this.service.post('/suppliers', params)
+            .then(response => response.data)
+    }
 }
 
 export default AuthService;
