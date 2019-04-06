@@ -1,8 +1,35 @@
 import React from 'react';
 import { Card, Button, Col, Row } from 'react-bootstrap';
+import * as moment from 'moment';
+import AuthService from '../auth/auth-service';
+import Popup from "reactjs-popup";
 
+const getSuppliers = (fabrics) => {
+    const fabricTypes = []
+    const service = new AuthService();
+
+    fabrics.map((item, i) => {
+        if(item.category)
+            fabricTypes.push(item.category);
+    });
+
+    service.getSuppliers(fabricTypes)
+        .then(res => {
+            console.log(res)
+            supplierModal(res);
+        })
+        .catch(error => console.log(error));
+
+}
+
+const supplierModal = () => (
+    <Popup modal open={true}>
+        <div>Popup content here !!</div>
+    </Popup>
+)
 
 const OldCollectionRuns = (props) => 
+    
     <div>
         <Row>
             <Col>
@@ -15,7 +42,7 @@ const OldCollectionRuns = (props) =>
             return(
                 <Col key={i}>
                     <Card bg="light">
-                        <Card.Header>Collection Launch Date - {item.launchDate}.</Card.Header>
+                        <Card.Header>Collection Launch Date - {moment(item.launchDate).format('DD-MMM-YYYY')}</Card.Header>
                         <Card.Body>
                             <Card.Title>{item.name}</Card.Title>
                             <Card.Text>
@@ -25,7 +52,7 @@ const OldCollectionRuns = (props) =>
                                 item.fabrics.map((f, i) => {  return f.category +"-"+ f.amount + " Meters"}) }</Card.Text>
                         </Card.Body>
                         <Card.Footer>
-                            <Button variant="outline-success" type="submit">Get Suppliers Email List</Button>
+                            <Button variant="outline-success" type="submit" onClick={() => getSuppliers(item.fabrics)}>Get Suppliers Email List</Button>
                         </Card.Footer>
                     </Card>
                 </Col>               
@@ -34,5 +61,6 @@ const OldCollectionRuns = (props) =>
            
         </Row>
     </div>
+
 
 export default OldCollectionRuns;

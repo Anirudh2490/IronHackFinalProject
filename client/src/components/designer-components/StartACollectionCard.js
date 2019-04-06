@@ -11,7 +11,7 @@ class StartACollectionCard extends Component {
     constructor(props) {
         super(props);
         this.state={
-            fabrics:[{category: null, amount: null, plans:null }],
+            fabrics:[],
             collectionName: '',
             aboutCollection: '',
             launchdate:null
