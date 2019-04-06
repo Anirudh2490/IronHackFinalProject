@@ -4,9 +4,10 @@ import * as moment from 'moment';
 import AuthService from '../auth/auth-service';
 import Popup from "reactjs-popup";
 
-const getSuppliers = (fabrics) => {
+export const getSuppliers = (fabrics) => {
     const fabricTypes = []
     const service = new AuthService();
+    const response=[]
 
     fabrics.map((item, i) => {
         if(item.category)
@@ -16,24 +17,29 @@ const getSuppliers = (fabrics) => {
     service.getSuppliers(fabricTypes)
         .then(res => {
             console.log(res)
-            supplierModal(res);
-        })
-        .catch(error => console.log(error));
+            res.map(item => {
+                response.push({name: item.user_id.full_name, email: item.user_id.email})
+            })
+            alert(JSON.stringify(response))
+            // supplierModal(res);
+    })
+    .catch(error => console.log(error));
+    
 
 }
 
-const supplierModal = () => (
+export const supplierModal = () => (
     <Popup modal open={true}>
         <div>Popup content here !!</div>
     </Popup>
 )
 
-const OldCollectionRuns = (props) => 
+export const OldCollectionRuns = (props) => 
     
     <div>
         <Row>
             <Col>
-                <h3>{props.brandname}'s Collection Drives</h3>
+                <h3>{props.brandname}s Collection Drives</h3>
             </Col>
         </Row>
             <br /><br /><br />
@@ -63,4 +69,7 @@ const OldCollectionRuns = (props) =>
     </div>
 
 
-export default OldCollectionRuns;
+{/*const OldCollectionRuns = Parse.Object.extend('OldCollectionRuns')
+const getSuppliers = Parse.Object.extend('getSuppliers')
+
+export { OldCollectionRuns, getSuppliers }*/}
