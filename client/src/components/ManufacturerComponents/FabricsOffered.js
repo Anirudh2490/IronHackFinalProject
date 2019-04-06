@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button, Col, Row } from 'react-bootstrap';
-
+import * as moment from 'moment';
 
 const FabricsOffered = (props) => 
     <div>
@@ -9,7 +9,7 @@ const FabricsOffered = (props) =>
                 return(
                     <Col>
                         <Card bg="light">
-                            <Card.Header>Available from - {f.availableFrom} <br/> Available till - {f.availableTill} </Card.Header>
+                            <Card.Header>Available from - {moment(f.availableFrom).format('DD-MMM-YYYY')} <br/> Available till - {moment(f.availableTill).format('DD-MMM-YYYY')} </Card.Header>
                             <Card.Body>
                                 <Card.Title>{f.fabricType}</Card.Title>
                                 <Card.Text>

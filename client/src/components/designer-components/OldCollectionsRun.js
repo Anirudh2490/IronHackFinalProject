@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button, Col, Row } from 'react-bootstrap';
-
+import * as moment from 'moment';
 
 const OldCollectionRuns = (props) => 
     <div>
@@ -15,7 +15,7 @@ const OldCollectionRuns = (props) =>
             return(
                 <Col key={i}>
                     <Card bg="light">
-                        <Card.Header>Collection Launch Date - {item.launchDate}.</Card.Header>
+                        <Card.Header>Collection Launch Date - {moment(item.launchDate).format('DD-MMM-YYYY')}</Card.Header>
                         <Card.Body>
                             <Card.Title>{item.name}</Card.Title>
                             <Card.Text>

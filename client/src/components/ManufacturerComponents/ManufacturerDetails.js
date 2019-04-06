@@ -58,7 +58,7 @@ class ManufacturerDetails extends Component {
                       manufacturer: {
                           ...prevState.manufacturer,
                           businessname: res.businessname,
-                          businesslogo: res.businesslogo,
+                          businesslogo: res.logo_path,
                           address: res.address,
                           city: res.city,
                           state: res.state,
