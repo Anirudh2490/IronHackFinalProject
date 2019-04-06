@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Container, Col, Row } from 'react-bootstrap';
 import SampleGallery from './Gallery'
 import DesignerProfileCards from './DesignerProfileCards'
-import OldCollectionRuns from './OldCollectionsRun'
+import {OldCollectionRuns} from './OldCollectionsRun'
 import StartACollectionCard from './StartACollectionCard'
 import AuthService from '../auth/auth-service';
 
@@ -121,7 +121,7 @@ class DesignerDetails extends Component {
                     <OldCollectionRuns brandname={this.state.designerItem.brand_name} collection={this.state.collections.length > 0 ? this.state.collections : []} />
 
                     {/*<OldCollectionRuns brandname={this.state.designerItem.brand_name} deadline={this.state.designerItem.collections[0].fabrics[0].collectiondeadline} name={this.state.designerItem.collections[0].name} about={this.state.designerItem.collections[0].about}/>*/}
-                    </Container>
+            </Container>
         )
     }
 }
